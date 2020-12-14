@@ -1,0 +1,39 @@
+//
+//  ViewController.swift
+//  Costey
+//
+//  Created by Vadim Colcev on 12/13/20.
+//
+
+import UIKit
+
+class MainScreenController: UITableViewController {
+    
+    @IBOutlet weak var periodSegmentedControl: UISegmentedControl!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Item.currentItems.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemCell
+        let item = Item.currentItems[indexPath.row]
+        cell.setLabels(name: item.name, period: "3", pricePerPeriod: "$11.33") // need to update period and pricePerPeriod
+        return cell
+    }
+    
+
+
+}
+

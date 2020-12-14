@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "728401F4-34BB-4434-B1CC-036485E215AC"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B3ED6A52-03BE-4E52-BF1C-4DA90DF2F07B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Costey/ItemCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "ItemCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "B3ED6A52-03BE-4E52-BF1C-4DA90DF2F07B - 845b324567574b2c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Costey.ItemCell.itemNameLabel.getter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "Costey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vdmclcv/programming/swift/Costey/Costey/ItemCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "B3ED6A52-03BE-4E52-BF1C-4DA90DF2F07B - bbcfae47ffebb7e0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Costey.ItemCell.itemNameLabel.setter : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "Costey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vdmclcv/programming/swift/Costey/Costey/ItemCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "155">
+               </Location>
+               <Location
+                  uuid = "B3ED6A52-03BE-4E52-BF1C-4DA90DF2F07B - 182c19285c1f85cf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Costey.ItemCell.itemNameLabel.modify : Swift.Optional&lt;__C.UILabel&gt;"
+                  moduleName = "Costey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vdmclcv/programming/swift/Costey/Costey/ItemCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "59">
+               </Location>
+               <Location
+                  uuid = "B3ED6A52-03BE-4E52-BF1C-4DA90DF2F07B - 74d87fb1809cf040"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Costey.ItemCell.itemNameLabel.modify : Swift.Optional&lt;__C.UILabel&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "Costey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vdmclcv/programming/swift/Costey/Costey/ItemCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "B3ED6A52-03BE-4E52-BF1C-4DA90DF2F07B - 6fd7af54cca8616c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Costey.ItemCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; Costey.ItemCell"
+                  moduleName = "Costey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vdmclcv/programming/swift/Costey/Costey/ItemCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "228">
+               </Location>
+               <Location
+                  uuid = "B3ED6A52-03BE-4E52-BF1C-4DA90DF2F07B - 7894a06ed380c0d7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Costey.ItemCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Costey.ItemCell&gt;"
+                  moduleName = "Costey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vdmclcv/programming/swift/Costey/Costey/ItemCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "148">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
