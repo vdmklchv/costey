@@ -37,6 +37,7 @@ class AddItemViewController: UIViewController {
                 if let price = Double(price) {
 
                     let item = Item(name: name, price: price, startDate: date)
+                    
                     if delegate != nil {
 
                         let dataToSend = item
