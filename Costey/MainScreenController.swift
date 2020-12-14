@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+
 class MainScreenController: UITableViewController, DataSendProtocol {
     
     var currentItems: [Item] = []
@@ -47,6 +49,7 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "getDataSegue" {
+            print("I'm here")
             let addItemVC: AddItemViewController = segue.destination as! AddItemViewController
             addItemVC.delegate = self
         }

@@ -39,11 +39,11 @@ class AddItemViewController: UIViewController {
                     let item = Item(name: name, price: price, startDate: date)
                     
                     if delegate != nil {
-
+                        print("Delegate is not nil")
                         let dataToSend = item
                         self.delegate?.sendData(myData: dataToSend)
                         self.delegate?.updateTable()
-                        dismiss(animated: true, completion: nil)
+                        self.navigationController?.popViewController(animated: true)
                     }
                 }
             }

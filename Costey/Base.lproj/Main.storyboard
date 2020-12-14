@@ -11,7 +11,7 @@
         <!--Add Item View Controller-->
         <scene sceneID="MqJ-WJ-iNs">
             <objects>
-                <viewController id="I9q-qu-N2u" customClass="AddItemViewController" customModule="Costey" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="I9q-qu-N2u" customClass="AddItemViewController" customModule="Costey" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rId-t5-0T7">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -111,7 +111,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MsB-4H-YhQ">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="BOR-SH-weo">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="BOR-SH-weo">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="I9q-qu-N2u" id="n3e-BO-TvK"/>
                             </connections>
@@ -132,7 +132,7 @@
         <!--Main Screen Table View Controller-->
         <scene sceneID="vQO-bn-9sY">
             <objects>
-                <tableViewController storyboardIdentifier="mainVC" id="QPT-a2-2KW" userLabel="Main Screen Table View Controller" customClass="MainScreenController" customModule="Costey" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="QPT-a2-2KW" userLabel="Main Screen Table View Controller" customClass="MainScreenController" customModule="Costey" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="YiT-Vr-ynf">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -146,7 +146,7 @@
                             </segments>
                         </segmentedControl>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="itemCell" id="dgT-kW-oso" customClass="Cell" customModule="Costey">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="itemCell" id="dgT-kW-oso" customClass="ItemCell" customModule="Costey" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="59" width="390" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dgT-kW-oso" id="IQ1-Cf-iCl">
@@ -154,14 +154,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jC-wK-WoJ" userLabel="Days Passed Label">
-                                            <rect key="frame" x="213" y="11" width="11" height="21"/>
+                                            <rect key="frame" x="175" y="11" width="56" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$11.11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WY3-k3-5Cf" userLabel="Price Per Period Label">
-                                            <rect key="frame" x="282" y="11" width="44" height="21"/>
+                                            <rect key="frame" x="250" y="11" width="101" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -177,9 +177,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="itemNameLabel" destination="CAF-hC-9Vt" id="NYe-dP-53Z"/>
-                                    <outlet property="periodsPassedLabel" destination="5jC-wK-WoJ" id="BQn-Lm-Ket"/>
-                                    <outlet property="pricePerPeriodLabel" destination="WY3-k3-5Cf" id="xYM-fm-B6H"/>
+                                    <outlet property="itemNameLabel" destination="CAF-hC-9Vt" id="bvR-tn-rEL"/>
+                                    <outlet property="periodsPassedLabel" destination="5jC-wK-WoJ" id="ak8-K2-s61"/>
+                                    <outlet property="pricePerPeriodLabel" destination="WY3-k3-5Cf" id="6eh-d0-xp0"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -189,7 +189,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="W1U-ca-trZ">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="wW7-U9-RTt">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wW7-U9-RTt">
                             <connections>
                                 <segue destination="I9q-qu-N2u" kind="show" identifier="getDataSegue" id="MD4-0K-G7f"/>
                             </connections>
