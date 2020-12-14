@@ -27,7 +27,7 @@ class AddItemViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
     
-    @IBAction func saveButtonTapped(_ sender: UIButton) {
+    @IBAction func saveButtonTapped(_ sender: Any) {
         let name = addItemTextField[0].text
         let price = addItemTextField[1].text
         let day = addItemTextField[2].text
