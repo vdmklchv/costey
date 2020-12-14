@@ -9,7 +9,6 @@ import Foundation
 
 
 struct Item {
-    static var currentItems: [Item] = []
     
     var name: String
     
