@@ -29,7 +29,11 @@ class MainScreenController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemCell
         let item = Item.currentItems[indexPath.row]
-        cell.setLabels(name: item.name, period: "3", pricePerPeriod: "$11.33") // need to update period and pricePerPeriod
+        let period = item.calculatePeriod(for: .day)
+        let pricePerPeriod = String(item.price / period)
+        cell.setLabels(name: item.name, period: String(period), pricePerPeriod: pricePerPeriod)
+        
+        
         return cell
     }
     
