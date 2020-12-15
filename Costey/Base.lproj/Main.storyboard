@@ -108,6 +108,9 @@
                                 <segment title="First"/>
                                 <segment title="Second"/>
                             </segments>
+                            <connections>
+                                <action selector="onSegmentChange:" destination="QPT-a2-2KW" eventType="valueChanged" id="Qqn-tm-DAe"/>
+                            </connections>
                         </segmentedControl>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="itemCell" id="dgT-kW-oso" customClass="ItemCell" customModule="Costey" customModuleProvider="target">
@@ -159,6 +162,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="periodSegmentedControl" destination="H4R-LO-99m" id="zvN-3T-4fL"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="11H-nZ-832" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

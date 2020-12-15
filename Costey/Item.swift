@@ -16,8 +16,10 @@ struct Item {
     
     var startDate: Date
     
-    enum Period {
-        case day, month, year
+    enum Period: String, CaseIterable {
+        case day
+        case month
+        case year
     }
     
     
