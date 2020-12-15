@@ -23,15 +23,15 @@ struct Item {
     }
     
     
-    func calculatePeriod(for period: Period) -> Double {
+    func calculatePeriod(for period: Period) -> Int {
         let currentDate = Date()
         switch period {
         case .day:
-            return round(currentDate.timeIntervalSince(startDate)/86400)
+            return Int(currentDate.timeIntervalSince(startDate)/86400)
         case .month:
-            return round(currentDate.timeIntervalSince(startDate)/2592000)
+            return Int(currentDate.timeIntervalSince(startDate)/2592000)
         case .year:
-            return round(currentDate.timeIntervalSince(startDate)/31104000)
+            return Int(currentDate.timeIntervalSince(startDate)/31104000)
         }
     }
     

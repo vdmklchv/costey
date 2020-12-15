@@ -33,7 +33,7 @@ class MainScreenController: UITableViewController, DataSendProtocol {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ItemCell else { return UITableViewCell() }
         
         let item = currentItems[indexPath.row]
-        cell.setLabels(for: item, and: .day)
+        cell.setLabels(for: item, and: period)
         return cell
     }
     
@@ -60,13 +60,13 @@ class MainScreenController: UITableViewController, DataSendProtocol {
         switch periodSegmentedControl.selectedSegmentIndex {
         case 0:
             period = Item.Period.day
-            tableView.reloadData() // find out how to recalculate everything
+            tableView.reloadData()
         case 1:
             period = Item.Period.month
-            tableView.reloadData() // find out how to recalculate everything
+            tableView.reloadData()
         case 2:
             period = Item.Period.year
-            tableView.reloadData() // find out how to recalculate everything
+            tableView.reloadData()
         default:
             period = Item.Period.day
         }
