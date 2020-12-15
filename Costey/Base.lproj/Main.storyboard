@@ -120,28 +120,38 @@
                                     <rect key="frame" x="0.0" y="0.0" width="358.66666666666669" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jC-wK-WoJ" userLabel="Days Passed Label">
-                                            <rect key="frame" x="175" y="11" width="67" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$11.11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WY3-k3-5Cf" userLabel="Price Per Period Label">
-                                            <rect key="frame" x="250" y="11" width="101" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAF-hC-9Vt" userLabel="Name Label">
-                                            <rect key="frame" x="41" y="10" width="126" height="34"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="unt-In-pmc">
+                                            <rect key="frame" x="20" y="11.666666666666666" width="308.66666666666669" height="20.333333333333336"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAF-hC-9Vt" userLabel="Name Label">
+                                                    <rect key="frame" x="0.0" y="0.0" width="174.33333333333334" height="20.333333333333332"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jC-wK-WoJ" userLabel="Days Passed Label">
+                                                    <rect key="frame" x="214.33333333333334" y="0.0" width="10.333333333333343" height="20.333333333333332"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$11.11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WY3-k3-5Cf" userLabel="Price Per Period Label">
+                                                    <rect key="frame" x="264.66666666666669" y="0.0" width="44" height="20.333333333333332"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="5jC-wK-WoJ" firstAttribute="centerY" secondItem="unt-In-pmc" secondAttribute="centerY" id="1hE-cc-g1x"/>
+                                            </constraints>
+                                        </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="unt-In-pmc" secondAttribute="trailing" constant="30" id="Shb-Bl-dKs"/>
+                                        <constraint firstItem="unt-In-pmc" firstAttribute="leading" secondItem="IQ1-Cf-iCl" secondAttribute="leading" constant="20" id="hja-t6-8sO"/>
+                                        <constraint firstItem="unt-In-pmc" firstAttribute="centerY" secondItem="IQ1-Cf-iCl" secondAttribute="centerY" id="ydp-h8-Gia"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="itemNameLabel" destination="CAF-hC-9Vt" id="bvR-tn-rEL"/>
@@ -173,18 +183,19 @@
         <!--Navigation Controller-->
         <scene sceneID="FNk-q7-hTb">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oFR-PS-bdb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HJV-a8-rtw" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="DvN-bN-S8E"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lPy-oa-Ngi">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="QPT-a2-2KW" kind="relationship" relationship="rootViewController" id="1ib-2v-krj"/>
+                        <segue destination="QPT-a2-2KW" kind="relationship" relationship="rootViewController" id="fpG-ez-Iqr"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oFR-PS-bdb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="861.53846153846155" y="78.909952606635073"/>
         </scene>

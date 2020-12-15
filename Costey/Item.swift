@@ -16,13 +16,13 @@ struct Item {
     
     var startDate: Date
     
-    enum Period: String, CaseIterable {
+    enum Period: String, CaseIterable { // Case iterable is used to be able to iterate through provided cases. Cases can be used as strings
         case day
         case month
         case year
     }
     
-    
+    // method to calculate period passed for instance item. Should be moved to ItemCell?
     func calculatePeriod(for period: Period) -> Int {
         let currentDate = Date()
         switch period {
