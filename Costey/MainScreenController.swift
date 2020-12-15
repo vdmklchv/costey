@@ -16,13 +16,11 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ItemCell else { return UITableViewCell() }
         
-        let cell = UITableViewCell()
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ItemCell {
-            let item = currentItems[indexPath.row]
-            cell.setLabels(for: item, and: .day)
-            return cell
-        }
+        let item = currentItems[indexPath.row]
+        cell.setLabels(for: item, and: .day)
         return cell
     }
     
@@ -33,8 +31,9 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "getDataSegue" {
-            let addItemVC: AddItemViewController = segue.destination as? AddItemViewController ?? AddItemViewController()
-            addItemVC.delegate = self
+            if let addItemVC: AddItemViewController = segue.destination as? AddItemViewController {
+                addItemVC.delegate = self
+            }
         }
     }
 
