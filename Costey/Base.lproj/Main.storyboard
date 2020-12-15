@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="39" translatesAutoresizingMaskIntoConstraints="NO" id="cc7-rC-5tA">
-                                <rect key="frame" x="20" y="259" width="350" height="326"/>
+                                <rect key="frame" x="20" y="241" width="350" height="362"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="89" translatesAutoresizingMaskIntoConstraints="NO" id="OLI-Mh-Ydq" userLabel="NameStackView">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="34"/>
@@ -51,52 +51,18 @@
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="107" translatesAutoresizingMaskIntoConstraints="NO" id="PbF-Ra-0Dz" userLabel="DayStackView">
-                                        <rect key="frame" x="0.0" y="146" width="350" height="34"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igc-ji-z2x">
+                                        <rect key="frame" x="0.0" y="146" width="350" height="216"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jFR-3v-Lik">
-                                                <rect key="frame" x="0.0" y="0.0" width="29.666666666666668" height="34"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8f-gy-A1W">
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="216"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t1u-eY-MzR">
-                                                <rect key="frame" x="136.66666666666663" y="0.0" width="213.33333333333337" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="117" translatesAutoresizingMaskIntoConstraints="NO" id="lG9-FJ-LrU" userLabel="MonthStackView">
-                                        <rect key="frame" x="0.0" y="219" width="350" height="34"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GV7-7x-SZ0">
-                                                <rect key="frame" x="0.0" y="0.0" width="49" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dEi-AS-W8L">
-                                                <rect key="frame" x="166" y="0.0" width="184" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="117" translatesAutoresizingMaskIntoConstraints="NO" id="LlZ-hA-2m6" userLabel="YearStackView">
-                                        <rect key="frame" x="0.0" y="292" width="350" height="34"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyJ-CI-r0A">
-                                                <rect key="frame" x="0.0" y="0.0" width="33.666666666666664" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZJQ-aF-qfT">
-                                                <rect key="frame" x="150.66666666666663" y="0.0" width="199.33333333333337" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="GeP-L2-m2w">
+                                                <rect key="frame" x="30" y="0.0" width="320" height="216"/>
+                                            </datePicker>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -118,11 +84,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outletCollection property="addItemTextField" destination="hvv-OW-ySv" collectionClass="NSMutableArray" id="gh7-3i-duZ"/>
-                        <outletCollection property="addItemTextField" destination="zSO-Tn-LK1" collectionClass="NSMutableArray" id="kEc-Q0-rwO"/>
-                        <outletCollection property="addItemTextField" destination="t1u-eY-MzR" collectionClass="NSMutableArray" id="R47-Fd-22g"/>
-                        <outletCollection property="addItemTextField" destination="dEi-AS-W8L" collectionClass="NSMutableArray" id="AsK-3z-onf"/>
-                        <outletCollection property="addItemTextField" destination="ZJQ-aF-qfT" collectionClass="NSMutableArray" id="PmJ-Kc-JdA"/>
+                        <outlet property="datePicker" destination="GeP-L2-m2w" id="p1t-1v-wNn"/>
+                        <outlet property="nameTextField" destination="hvv-OW-ySv" id="Efu-GE-Ycq"/>
+                        <outlet property="priceTextField" destination="zSO-Tn-LK1" id="mxI-rn-CQA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jlZ-Ye-k9o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

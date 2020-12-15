@@ -15,32 +15,27 @@ class AddItemViewController: UIViewController {
     
     var delegate: DataSendProtocol? = nil
 
-    @IBOutlet var addItemTextField: [UITextField]!
+    
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var priceTextField: UITextField!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        let name = addItemTextField[0].text
-        let price = addItemTextField[1].text
-        let day = addItemTextField[2].text
-        let month = addItemTextField[3].text
-        let year = addItemTextField[4].text
-        
-        if let day = day, let month = month, let year = year, let price = price, let name = name {
-
-            if let date = Item.getDateObject(for: Int(day), month: Int(month), year: Int(year)) {
-
-                if let price = Double(price) {
-
-                    let item = Item(name: name, price: price, startDate: date)
-                    
-                    if delegate != nil {
-                        let dataToSend = item
-                        self.delegate?.sendDataAndUpdate(myData: dataToSend)
-                        self.navigationController?.popViewController(animated: true)
-                    }
+        if let name = nameTextField.text,
+        let price = priceTextField.text {
+            if let price = Double(price) {
+                let date = datePicker.date
+                let item = Item(name: name, price: price, startDate: date)
+                if delegate != nil {
+                    let dataToSend = item
+                    self.delegate?.sendDataAndUpdate(myData: dataToSend)
+                    self.navigationController?.popViewController(animated: true)
                 }
             }
         }
-    }
         
+    }
 }
+
 

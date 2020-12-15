@@ -33,18 +33,6 @@ struct Item {
         }
     }
     
-    static func getDateObject(for day: Int?, month: Int?, year: Int?) -> Date? {
-        var components = DateComponents()
-        components.year = year
-        components.month = month
-        components.day = day
-        if let date = Calendar.current.date(from: components) {
-            return date
-        }
-        else {
-            return nil
-        }
-    }
     
 }
 
