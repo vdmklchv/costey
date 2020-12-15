@@ -54,19 +54,19 @@ class MainScreenController: UITableViewController, DataSendProtocol {
         periodSegmentedControl.insertSegment(withTitle: title, at: position, animated: true)
     }
     
-    
+    func setPeriodAndReload(for passedPeriod: Item.Period) {
+        period = passedPeriod
+        tableView.reloadData()
+    }
     
     @IBAction func onSegmentChange(_ sender: Any) {
         switch periodSegmentedControl.selectedSegmentIndex {
         case 0:
-            period = Item.Period.day
-            tableView.reloadData()
+            setPeriodAndReload(for: .day)
         case 1:
-            period = Item.Period.month
-            tableView.reloadData()
+            setPeriodAndReload(for: .month)
         case 2:
-            period = Item.Period.year
-            tableView.reloadData()
+            setPeriodAndReload(for: .year)
         default:
             period = Item.Period.day
         }
