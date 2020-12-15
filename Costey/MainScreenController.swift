@@ -17,28 +17,23 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ItemCell
-        let item = currentItems[indexPath.row]
-        let period = item.calculatePeriod(for: .day)
-        let pricePerPeriod = String(item.price / period)
-        
-        cell.setLabels(name: item.name, period: String(period), pricePerPeriod: pricePerPeriod)
-        
-        
+        let cell = UITableViewCell()
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ItemCell {
+            let item = currentItems[indexPath.row]
+            cell.setLabels(for: item, and: .day)
+            return cell
+        }
         return cell
     }
     
-    func sendData(myData: Item) {
+    func sendDataAndUpdate(myData: Item) {
         currentItems.append(myData)
-    }
-    
-    func updateTable() {
         tableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "getDataSegue" {
-            let addItemVC: AddItemViewController = segue.destination as! AddItemViewController
+            let addItemVC: AddItemViewController = segue.destination as? AddItemViewController ?? AddItemViewController()
             addItemVC.delegate = self
         }
     }

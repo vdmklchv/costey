@@ -22,10 +22,10 @@ struct Item {
     
     
     func calculatePeriod(for period: Period) -> Double {
+        let currentDate = Date()
         switch period {
         case .day:
-            print(startDate.timeIntervalSinceNow)
-            return startDate.timeIntervalSinceNow
+            return currentDate.timeIntervalSince(startDate)
         case .month:
             return startDate.timeIntervalSinceNow
         case .year:
@@ -45,6 +45,7 @@ struct Item {
             return nil
         }
     }
+    
 }
 
 

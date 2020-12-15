@@ -8,8 +8,7 @@
 import UIKit
 
 protocol DataSendProtocol {
-    func sendData(myData: Item)
-    func updateTable()
+    func sendDataAndUpdate(myData: Item)
 }
 
 class AddItemViewController: UIViewController {
@@ -35,8 +34,7 @@ class AddItemViewController: UIViewController {
                     
                     if delegate != nil {
                         let dataToSend = item
-                        self.delegate?.sendData(myData: dataToSend)
-                        self.delegate?.updateTable()
+                        self.delegate?.sendDataAndUpdate(myData: dataToSend)
                         self.navigationController?.popViewController(animated: true)
                     }
                 }
