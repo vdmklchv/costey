@@ -25,11 +25,11 @@ struct Item {
         let currentDate = Date()
         switch period {
         case .day:
-            return currentDate.timeIntervalSince(startDate)
+            return round(currentDate.timeIntervalSince(startDate)/86400)
         case .month:
-            return startDate.timeIntervalSinceNow
+            return round(currentDate.timeIntervalSince(startDate)/2592000)
         case .year:
-            return startDate.timeIntervalSinceNow
+            return round(currentDate.timeIntervalSince(startDate)/31104000)
         }
     }
     

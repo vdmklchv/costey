@@ -18,9 +18,9 @@ class ItemCell: UITableViewCell {
     
     func setLabels(for item: Item, and period: Item.Period) {
         let passedPeriod = item.calculatePeriod(for: period)
-        let pricePerPeriod = String(item.price / passedPeriod)
+        let pricePerPeriod = String(Int(item.price / passedPeriod))
         itemNameLabel.text = item.name
-        periodsPassedLabel.text = String(passedPeriod)
+        periodsPassedLabel.text = String(Int(passedPeriod))
         pricePerPeriodLabel.text = pricePerPeriod
     }
 }
