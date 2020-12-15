@@ -9,6 +9,7 @@ import UIKit
 
 class MainScreenController: UITableViewController, DataSendProtocol {
     
+    
     @IBOutlet weak var periodSegmentedControl: UISegmentedControl!
     
     var period: Item.Period = .day
@@ -22,6 +23,7 @@ class MainScreenController: UITableViewController, DataSendProtocol {
             setSegmentedControlTitle(for: index, title: item.rawValue.capitalized)
         }
         periodSegmentedControl.selectedSegmentIndex = 0
+        self.title = "All items"
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,12 +44,30 @@ class MainScreenController: UITableViewController, DataSendProtocol {
         tableView.reloadData()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "getDataSegue" {
-            if let addItemVC: AddItemViewController = segue.destination as? AddItemViewController {
-                addItemVC.delegate = self
-            }
+    func updateDataAndRefresh(myData: Item, updateIndex: Int) {
+        currentItems[updateIndex] = myData
+        tableView.reloadData()
+    }
+    
+    @IBAction func addButtonTapped(_ sender: Any) {
+        if let addItemVc: AddItemViewController = storyboard?.instantiateViewController(identifier: "addUpdateVC") as? AddItemViewController {
+            navigationController?.pushViewController(addItemVc, animated: true)
+            addItemVc.delegate = self
+            addItemVc.title = "Add Item"
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = currentItems[indexPath.row]
+        if let vc = storyboard?.instantiateViewController(identifier: "addUpdateVC") as? AddItemViewController {
+            navigationController?.pushViewController(vc, animated: true)
+            _ = vc.view
+            vc.prepopulateItemData(from: item)
+            vc.updateIndex = indexPath.row
+            vc.delegate = self
+        }
+        
+        
     }
     
     func setSegmentedControlTitle(for position: Int, title: String) {
