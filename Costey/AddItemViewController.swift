@@ -26,7 +26,7 @@ class AddItemViewController: UIViewController {
     // method to pre-populate text fields and date picker
     func prepopulateItemData(from item: Item) {
         nameTextField.text = item.name
-        priceTextField.text = String(item.price)
+        priceTextField.text = String(format: "%.2f", item.price)
         datePicker.setDate(item.startDate, animated: true)
     }
     

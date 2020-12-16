@@ -20,13 +20,13 @@ class ItemCell: UITableViewCell {
         let passedPeriod = item.calculatePeriod(for: period)
         let pricePerPeriod: String
         if passedPeriod == 0 { // prevent app from crashing because of zero division
-            pricePerPeriod = String(Int(item.price))
+            pricePerPeriod = String(format: "%.2f", item.price)
         } else {
-            pricePerPeriod = String(Int(item.price/Double(passedPeriod)))
+            pricePerPeriod = String(format: "%.2f", item.price/Double(passedPeriod))
         }
         
         itemNameLabel.text = item.name
         periodsPassedLabel.text = String(Int(passedPeriod))
-        pricePerPeriodLabel.text = pricePerPeriod
+        pricePerPeriodLabel.text = "$\(pricePerPeriod)"
     }
 }
