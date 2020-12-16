@@ -133,7 +133,8 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     func writeToPlist() {
             let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Items.plist")
             do {
-                let data = try PropertyListEncoder().encode(currentItems)
+                let jsonEncoder = JSONEncoder()
+                let data = try jsonEncoder.encode(currentItems)
                 try data.write(to: path)
             } catch {
                 print("Error writing to plist")
