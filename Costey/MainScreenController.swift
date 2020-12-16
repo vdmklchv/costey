@@ -56,6 +56,7 @@ class MainScreenController: UITableViewController, DataSendProtocol {
         currentItems.append(myData)
         writeToPlist()
         tableView.reloadData()
+        readFromPlistAndUpdateCurrentItems()
     }
     
     // method to update item and refresh table after update
@@ -118,16 +119,16 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     
     // READ FROM PLIST METHOD
     func readFromPlistAndUpdateCurrentItems() {
-        if let path = Bundle.main.url(forResource: "Items", withExtension: "plist") {
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Items.plist")
+           
             do {
                 let plistData = try Data(contentsOf: path)
-                if let array = try PropertyListSerialization.propertyList(from: plistData, options: .mutableContainersAndLeaves, format: nil) as? [Item] {
-                    currentItems = array
-                }
+                let jsonDecoder = JSONDecoder()
+                let array = try jsonDecoder.decode([Item].self, from: plistData)
+                currentItems = array
                 } catch {
                     print("Error while updating current items.")
             }
-        }
     }
     
     func writeToPlist() {
