@@ -25,7 +25,6 @@ class MainScreenController: UITableViewController, DataSendProtocol {
         }
         periodSegmentedControl.selectedSegmentIndex = 0 // select the first segmented control by default
         self.title = "All items" // set title for table view controller
-        readFromPlist()
         tableView.reloadData()
     }
     
@@ -53,13 +52,12 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     // Implementation of needed protocol methods
     func sendDataAndUpdate(myData: Item) {
         currentItems.append(myData)
-        writeToPlist()
         tableView.reloadData()
     }
     
+    // method to update item and refresh table after update
     func updateDataAndRefresh(myData: Item, updateIndex: Int) {
         currentItems[updateIndex] = myData
-        writeToPlist()
         tableView.reloadData()
     }
     
@@ -115,48 +113,6 @@ class MainScreenController: UITableViewController, DataSendProtocol {
         }
     }
     
-    // WORK WITH PLIST
-    
-    // method to retrieve plist
-    func getPlist(withName name: String) -> [String]?
-    {
-        if  let path = Bundle.main.path(forResource: name, ofType: "plist"),
-            let xml = FileManager.default.contents(atPath: path)
-        {
-            return (try? PropertyListSerialization.propertyList(from: xml, options: .mutableContainersAndLeaves, format: nil)) as? [String]
-        }
-
-        return nil
-    }
-    
-    // get plist array
-    func readFromPlist() {
-                if let path = Bundle.main.path(forResource: "Items", ofType: "plist"),
-                   let xml = FileManager.default.contents(atPath: path),
-                   let items = try? PropertyListDecoder().decode(Item.self, from: xml)
-                {
-                    print(items)
-                }
-                tableView.reloadData()
-          
-        
-        }
-    
-    func writeToPlist() {
-        let encoder = PropertyListEncoder()
-        encoder.outputFormat = .xml
-        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Items.plist")
-        for item in currentItems {
-            do {
-                let data = try encoder.encode(item)
-                try data.write(to: path)
-            } catch {
-                print("Unable to push item to plist or missing write permissions.")
-            }
-        }
-               
-
-    }
 }
 
 
