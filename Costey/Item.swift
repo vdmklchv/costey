@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct Item {
+struct Item: Codable { // needs Codable to be able to serialize it to json
     
     var name: String
     
@@ -34,7 +34,6 @@ struct Item {
             return Int(currentDate.timeIntervalSince(startDate)/31104000)
         }
     }
-    
     
 }
 

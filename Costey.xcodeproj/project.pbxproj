@@ -16,6 +16,7 @@
 		B5BA421B25869BF7007FC720 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5BA421925869BF7007FC720 /* LaunchScreen.storyboard */; };
 		B5BA422B25869EC1007FC720 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA422A25869EC1007FC720 /* Item.swift */; };
 		B5BA42322586C314007FC720 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA42312586C314007FC720 /* AddItemViewController.swift */; };
+		B5E596B72589742500BE7795 /* Items.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5E596B62589742400BE7795 /* Items.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		B5BA421C25869BF7007FC720 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5BA422A25869EC1007FC720 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		B5BA42312586C314007FC720 /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		B5E596B62589742400BE7795 /* Items.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Items.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				B5BA421225869BF2007FC720 /* MainScreenController.swift */,
 				B52FB4E925879BCC003BAFFB /* ItemCell.swift */,
 				B5BA421425869BF2007FC720 /* Main.storyboard */,
+				B5E596B62589742400BE7795 /* Items.plist */,
 				B5BA42312586C314007FC720 /* AddItemViewController.swift */,
 				B5BA422A25869EC1007FC720 /* Item.swift */,
 				B5BA421725869BF7007FC720 /* Assets.xcassets */,
@@ -136,6 +139,7 @@
 				B5BA421B25869BF7007FC720 /* LaunchScreen.storyboard in Resources */,
 				B5BA421825869BF7007FC720 /* Assets.xcassets in Resources */,
 				B5BA421625869BF2007FC720 /* Main.storyboard in Resources */,
+				B5E596B72589742500BE7795 /* Items.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
