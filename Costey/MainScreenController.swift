@@ -56,12 +56,12 @@ class MainScreenController: UITableViewController, DataSendProtocol {
         currentItems.append(myData)
         writeToPlist()
         tableView.reloadData()
-        readFromPlistAndUpdateCurrentItems()
     }
     
     // method to update item and refresh table after update
     func updateDataAndRefresh(myData: Item, updateIndex: Int) {
         currentItems[updateIndex] = myData
+        writeToPlist()
         tableView.reloadData()
     }
     
