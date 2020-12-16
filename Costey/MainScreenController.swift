@@ -94,6 +94,7 @@ class MainScreenController: UITableViewController, DataSendProtocol {
         if editingStyle == UITableViewCell.EditingStyle.delete {
             currentItems.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+            writeToPlist()
         }
     }
     
