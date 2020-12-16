@@ -132,26 +132,26 @@
                                     <rect key="frame" x="0.0" y="0.0" width="358.66666666666669" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="unt-In-pmc">
-                                            <rect key="frame" x="20" y="11.666666666666666" width="308.66666666666669" height="20.333333333333336"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="unt-In-pmc">
+                                            <rect key="frame" x="20" y="11.666666666666666" width="318.66666666666669" height="20.333333333333336"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAF-hC-9Vt" userLabel="Name Label">
-                                                    <rect key="frame" x="0.0" y="0.0" width="174.33333333333334" height="20.333333333333332"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="20.333333333333332"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="YQW-er-EpX">
-                                                    <rect key="frame" x="214.33333333333334" y="0.0" width="94.333333333333343" height="20.333333333333332"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="YQW-er-EpX">
+                                                    <rect key="frame" x="190.66666666666666" y="0.0" width="127.99999999999997" height="20.333333333333332"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jC-wK-WoJ" userLabel="Days Passed Label">
-                                                            <rect key="frame" x="0.0" y="0.0" width="10.333333333333334" height="20.333333333333332"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="44" height="20.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$11.11" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WY3-k3-5Cf" userLabel="Price Per Period Label">
-                                                            <rect key="frame" x="50.333333333333343" y="0.0" width="44" height="20.333333333333332"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$11.11" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WY3-k3-5Cf" userLabel="Price Per Period Label">
+                                                            <rect key="frame" x="84.000000000000028" y="0.0" width="44" height="20.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -162,9 +162,9 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="unt-In-pmc" secondAttribute="trailing" constant="30" id="Shb-Bl-dKs"/>
-                                        <constraint firstItem="unt-In-pmc" firstAttribute="leading" secondItem="IQ1-Cf-iCl" secondAttribute="leading" constant="20" id="hja-t6-8sO"/>
-                                        <constraint firstItem="unt-In-pmc" firstAttribute="centerY" secondItem="IQ1-Cf-iCl" secondAttribute="centerY" id="ydp-h8-Gia"/>
+                                        <constraint firstItem="unt-In-pmc" firstAttribute="leading" secondItem="IQ1-Cf-iCl" secondAttribute="leading" constant="20" id="3rE-BH-56c"/>
+                                        <constraint firstAttribute="trailing" secondItem="unt-In-pmc" secondAttribute="trailing" constant="20" id="7YU-IL-Wgl"/>
+                                        <constraint firstItem="unt-In-pmc" firstAttribute="centerY" secondItem="IQ1-Cf-iCl" secondAttribute="centerY" id="oE1-XZ-Hxw"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
