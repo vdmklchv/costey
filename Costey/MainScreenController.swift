@@ -14,6 +14,7 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     
     var period: Item.Period = .day
     
+    //var currentItems: [Item] = []
     var currentItems: [Item] = []
     
     override func viewDidLoad() {
@@ -25,6 +26,7 @@ class MainScreenController: UITableViewController, DataSendProtocol {
         }
         periodSegmentedControl.selectedSegmentIndex = 0 // select the first segmented control by default
         self.title = "All items" // set title for table view controller
+        readFromPlistAndUpdateCurrentItems()
         tableView.reloadData()
     }
     
@@ -52,6 +54,7 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     // Implementation of needed protocol methods
     func sendDataAndUpdate(myData: Item) {
         currentItems.append(myData)
+        writeToPlist()
         tableView.reloadData()
     }
     
@@ -111,6 +114,30 @@ class MainScreenController: UITableViewController, DataSendProtocol {
         default:
             period = Item.Period.day
         }
+    }
+    
+    // READ FROM PLIST METHOD
+    func readFromPlistAndUpdateCurrentItems() {
+        if let path = Bundle.main.url(forResource: "Items", withExtension: "plist") {
+            do {
+                let plistData = try Data(contentsOf: path)
+                if let array = try PropertyListSerialization.propertyList(from: plistData, options: .mutableContainersAndLeaves, format: nil) as? [Item] {
+                    currentItems = array
+                }
+                } catch {
+                    print("Error while updating current items.")
+            }
+        }
+    }
+    
+    func writeToPlist() {
+            let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Items.plist")
+            do {
+                let data = try PropertyListEncoder().encode(currentItems)
+                try data.write(to: path)
+            } catch {
+                print("Error writing to plist")
+            }
     }
     
 }
