@@ -16,7 +16,7 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     
     //var currentItems: [Item] = []
     var currentItems: [Item] = []
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         periodSegmentedControl.removeAllSegments() // remove default segments of segmented control
@@ -27,6 +27,11 @@ class MainScreenController: UITableViewController, DataSendProtocol {
         periodSegmentedControl.selectedSegmentIndex = 0 // select the first segmented control by default
         self.title = "All items" // set title for table view controller
         readFromPlistAndUpdateCurrentItems()
+        tableView.reloadData()
+    }
+    
+    @objc func refresh(_ sender: Any) {
+        print("Refreshed")
         tableView.reloadData()
     }
     
@@ -143,6 +148,9 @@ class MainScreenController: UITableViewController, DataSendProtocol {
             }
     }
     
+    @IBAction func refreshButtonTapped(_ sender: Any) {
+        tableView.reloadData()
+    }
 }
 
 
