@@ -14,8 +14,8 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     
     var period: Item.Period = .day
     
-    //var currentItems: [Item] = []
-    var currentItems: [Item] = []
+    // var currentItems: [Item] = []
+    let data = DefaultDataManager()
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +31,12 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     }
     
     @objc func refresh(_ sender: Any) {
-        print("Refreshed")
         tableView.reloadData()
     }
     
     // return number of rows needed
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return currentItems.count
+        return data.arrLength
     }
     
     // create cells for table
@@ -45,7 +44,7 @@ class MainScreenController: UITableViewController, DataSendProtocol {
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ItemCell else { return UITableViewCell() }
         
-        let item = currentItems[indexPath.row]
+        let item = data.currentItems[indexPath.row]
         cell.setLabels(for: item, and: period) // set labels for cell
         return cell
     }
@@ -58,14 +57,14 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     
     // Implementation of needed protocol methods
     func sendDataAndUpdate(myData: Item) {
-        currentItems.append(myData)
+        data.currentItems.append(myData)
         writeToPlist()
         tableView.reloadData()
     }
     
     // method to update item and refresh table after update
     func updateDataAndRefresh(myData: Item, updateIndex: Int) {
-        currentItems[updateIndex] = myData
+        data.currentItems[updateIndex] = myData
         writeToPlist()
         tableView.reloadData()
     }
@@ -82,7 +81,7 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     
     // method to perform code when certain table row is selected
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = currentItems[indexPath.row] // store item corresponding to selected row
+        let item = data.currentItems[indexPath.row] // store item corresponding to selected row
         if let vc = storyboard?.instantiateViewController(identifier: "addUpdateVC") as? AddItemViewController {
             navigationController?.pushViewController(vc, animated: true)
             _ = vc.view  // use this to load the vc view fully
@@ -97,7 +96,7 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     // delete item functionality
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            currentItems.remove(at: indexPath.row)
+            data.currentItems.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
             writeToPlist()
         }
@@ -131,7 +130,7 @@ class MainScreenController: UITableViewController, DataSendProtocol {
                 let plistData = try Data(contentsOf: path)
                 let jsonDecoder = JSONDecoder()
                 let array = try jsonDecoder.decode([Item].self, from: plistData)
-                currentItems = array
+                data.currentItems = array
                 } catch {
                     print("Error while updating current items.")
             }
@@ -141,8 +140,8 @@ class MainScreenController: UITableViewController, DataSendProtocol {
             let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Items.plist")
             do {
                 let jsonEncoder = JSONEncoder()
-                let data = try jsonEncoder.encode(currentItems)
-                try data.write(to: path)
+                let receivedData = try jsonEncoder.encode(data.currentItems)
+                try receivedData.write(to: path)
             } catch {
                 print("Error writing to plist")
             }
