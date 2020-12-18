@@ -27,7 +27,7 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
         }
         periodSegmentedControl.selectedSegmentIndex = 0 // select the first segmented control by default
         self.title = "All items" // set title for table view controller
-        data.onDataRefresh = { self.tableView.reloadData(); return }
+        data.onDataRefresh = { self.tableView.reloadData() }
     }
     
     // return number of rows needed
@@ -89,7 +89,6 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
             data.removeItem(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         }
     }
     
