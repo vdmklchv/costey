@@ -8,13 +8,12 @@
 import Foundation
 
 class DefaultDataManager: DataManager {
-    internal var currentItems: [Item] = [] {
-        didSet {
-            setArrLength()
-        }
-    }
     
-    var arrLength: Int = 0
+    private var currentItems: [Item] = []
+    
+    var arrLength: Int {
+        currentItems.count
+    }
     
     func saveItem(item: Item) {
         currentItems.append(item)
@@ -22,10 +21,6 @@ class DefaultDataManager: DataManager {
     
     func getItem(at index: Int) -> Item {
         return currentItems[index]
-    }
-    
-    func setArrLength() {
-        arrLength = currentItems.count
     }
     
     func updateArr(with item: Item, at index: Int) {

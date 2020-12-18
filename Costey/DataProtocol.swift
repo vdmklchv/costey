@@ -8,7 +8,7 @@
 import Foundation
 
 protocol DataManager {
-    var arrLength: Int { get set }
+    var arrLength: Int { get }
     
     func saveItem(item: Item)
     func getItem(at index: Int) -> Item
