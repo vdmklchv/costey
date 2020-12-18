@@ -9,8 +9,12 @@ import Foundation
 
 class DefaultDataManager: DataManager {
     
+    init() {
+        readFromPlistAndUpdateCurrentItems()
+    }
+    
     var delegate: MainScreenController?
-
+    
     private var currentItems: [Item] = [] {
         didSet {
             writeToPlist()

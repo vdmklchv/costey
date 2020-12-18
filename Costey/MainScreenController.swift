@@ -26,7 +26,6 @@ class MainScreenController: UITableViewController, UpdateUIProtocol, DataSendPro
         }
         periodSegmentedControl.selectedSegmentIndex = 0 // select the first segmented control by default
         self.title = "All items" // set title for table view controller
-        data.readFromPlistAndUpdateCurrentItems()
     }
     
     @objc func refresh(_ sender: Any) {
