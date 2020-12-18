@@ -30,10 +30,6 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
         data.onDataRefresh = { self.tableView.reloadData(); return }
     }
     
-    @objc func refresh(_ sender: Any) {
-        tableView.reloadData()
-    }
-    
     // return number of rows needed
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.arrLength
@@ -58,13 +54,11 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
     // Implementation of needed protocol methods
     func sendDataAndUpdate(myData: Item) {
         data.saveItem(item: myData)
-        tableView.reloadData()
     }
     
     // method to update item and refresh table after update
     func updateDataAndRefresh(myData: Item, updateIndex: Int) {
         data.updateArr(with: myData, at: updateIndex)
-        tableView.reloadData()
     }
     
     // action for + item tapped
