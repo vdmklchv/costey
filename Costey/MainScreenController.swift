@@ -7,14 +7,14 @@
 
 import UIKit
 
-class MainScreenController: UITableViewController, DataSendProtocol {
+class MainScreenController: UITableViewController, UpdateUIProtocol, DataSendProtocol  {
+    
     
     
     @IBOutlet weak var periodSegmentedControl: UISegmentedControl!
     
     var period: Item.Period = .day
     
-    // var currentItems: [Item] = []
     let data = DefaultDataManager()
         
     override func viewDidLoad() {
@@ -27,7 +27,6 @@ class MainScreenController: UITableViewController, DataSendProtocol {
         periodSegmentedControl.selectedSegmentIndex = 0 // select the first segmented control by default
         self.title = "All items" // set title for table view controller
         data.readFromPlistAndUpdateCurrentItems()
-        tableView.reloadData()
     }
     
     @objc func refresh(_ sender: Any) {
@@ -58,14 +57,12 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     // Implementation of needed protocol methods
     func sendDataAndUpdate(myData: Item) {
         data.saveItem(item: myData)
-        data.writeToPlist()
         tableView.reloadData()
     }
     
     // method to update item and refresh table after update
     func updateDataAndRefresh(myData: Item, updateIndex: Int) {
         data.updateArr(with: myData, at: updateIndex)
-        data.writeToPlist()
         tableView.reloadData()
     }
     
@@ -98,7 +95,6 @@ class MainScreenController: UITableViewController, DataSendProtocol {
         if editingStyle == UITableViewCell.EditingStyle.delete {
             data.removeItem(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
-            data.writeToPlist()
         }
     }
     
@@ -125,6 +121,11 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     // READ FROM PLIST METHOD
     
     @IBAction func refreshButtonTapped(_ sender: Any) {
+        tableView.reloadData()
+    }
+    
+    func updateUI() {
+        data.delegate = self
         tableView.reloadData()
     }
 }

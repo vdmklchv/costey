@@ -9,7 +9,14 @@ import Foundation
 
 class DefaultDataManager: DataManager {
     
-    private var currentItems: [Item] = []
+    var delegate: MainScreenController?
+
+    private var currentItems: [Item] = [] {
+        didSet {
+            writeToPlist()
+            delegate?.updateUI()
+        }
+    }
     
     var arrLength: Int {
         currentItems.count

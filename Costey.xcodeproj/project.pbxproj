@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B5238689258BEFF200A13289 /* DataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5238688258BEFF200A13289 /* DataProtocol.swift */; };
 		B523868C258BF9ED00A13289 /* DefaultDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B523868B258BF9ED00A13289 /* DefaultDataManager.swift */; };
+		B523868F258CAF0C00A13289 /* UpdateUIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B523868E258CAF0C00A13289 /* UpdateUIProtocol.swift */; };
 		B52FB4EA25879BCC003BAFFB /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FB4E925879BCC003BAFFB /* ItemCell.swift */; };
 		B5BA420F25869BF2007FC720 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA420E25869BF2007FC720 /* AppDelegate.swift */; };
 		B5BA421125869BF2007FC720 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BA421025869BF2007FC720 /* SceneDelegate.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		B5238688258BEFF200A13289 /* DataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProtocol.swift; sourceTree = "<group>"; };
 		B523868B258BF9ED00A13289 /* DefaultDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDataManager.swift; sourceTree = "<group>"; };
+		B523868E258CAF0C00A13289 /* UpdateUIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUIProtocol.swift; sourceTree = "<group>"; };
 		B52FB4E925879BCC003BAFFB /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		B5BA420B25869BF2007FC720 /* Costey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Costey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5BA420E25869BF2007FC720 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				B5BA421C25869BF7007FC720 /* Info.plist */,
 				B5238688258BEFF200A13289 /* DataProtocol.swift */,
 				B523868B258BF9ED00A13289 /* DefaultDataManager.swift */,
+				B523868E258CAF0C00A13289 /* UpdateUIProtocol.swift */,
 			);
 			path = Costey;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				B5BA421125869BF2007FC720 /* SceneDelegate.swift in Sources */,
 				B5BA42322586C314007FC720 /* AddItemViewController.swift in Sources */,
 				B523868C258BF9ED00A13289 /* DefaultDataManager.swift in Sources */,
+				B523868F258CAF0C00A13289 /* UpdateUIProtocol.swift in Sources */,
 				B5238689258BEFF200A13289 /* DataProtocol.swift in Sources */,
 				B52FB4EA25879BCC003BAFFB /* ItemCell.swift in Sources */,
 			);
