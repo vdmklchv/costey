@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainScreenController: UITableViewController, UpdateUIProtocol, DataSendProtocol  {
+class MainScreenController: UITableViewController, DataSendProtocol  {
     
     
     
@@ -16,7 +16,8 @@ class MainScreenController: UITableViewController, UpdateUIProtocol, DataSendPro
     var period: Item.Period = .day
     
     let data = DefaultDataManager()
-        
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         periodSegmentedControl.removeAllSegments() // remove default segments of segmented control
@@ -26,6 +27,7 @@ class MainScreenController: UITableViewController, UpdateUIProtocol, DataSendPro
         }
         periodSegmentedControl.selectedSegmentIndex = 0 // select the first segmented control by default
         self.title = "All items" // set title for table view controller
+        data.onDataRefresh = { self.tableView.reloadData(); return }
     }
     
     @objc func refresh(_ sender: Any) {
@@ -120,11 +122,6 @@ class MainScreenController: UITableViewController, UpdateUIProtocol, DataSendPro
     // READ FROM PLIST METHOD
     
     @IBAction func refreshButtonTapped(_ sender: Any) {
-        tableView.reloadData()
-    }
-    
-    func updateUI() {
-        data.delegate = self
         tableView.reloadData()
     }
 }

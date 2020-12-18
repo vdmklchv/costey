@@ -14,6 +14,4 @@ protocol DataManager {
     func getItem(at index: Int) -> Item
     func updateArr(with item: Item, at index: Int)
     func removeItem(at index: Int)
-    func readFromPlistAndUpdateCurrentItems()
-    func writeToPlist()
 }

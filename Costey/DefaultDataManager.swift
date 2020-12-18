@@ -7,20 +7,21 @@
 
 import Foundation
 
-class DefaultDataManager: DataManager {
+class DefaultDataManager: DataManager, UpdateUIProtocol {    
     
     init() {
         readFromPlistAndUpdateCurrentItems()
     }
     
-    var delegate: MainScreenController?
-    
+    var onDataRefresh: (() -> Void)?
+        
     private var currentItems: [Item] = [] {
         didSet {
             writeToPlist()
-            delegate?.updateUI()
+            onDataRefresh?()
         }
     }
+    
     
     var arrLength: Int {
         currentItems.count

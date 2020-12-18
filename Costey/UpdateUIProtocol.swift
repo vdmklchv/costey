@@ -8,5 +8,5 @@
 import Foundation
 
 protocol UpdateUIProtocol {
-    func updateUI()
+    var onDataRefresh: (() -> Void)? { get set }
 }
