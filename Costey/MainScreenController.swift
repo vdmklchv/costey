@@ -26,7 +26,7 @@ class MainScreenController: UITableViewController, DataSendProtocol {
         }
         periodSegmentedControl.selectedSegmentIndex = 0 // select the first segmented control by default
         self.title = "All items" // set title for table view controller
-        readFromPlistAndUpdateCurrentItems()
+        data.readFromPlistAndUpdateCurrentItems()
         tableView.reloadData()
     }
     
@@ -44,7 +44,7 @@ class MainScreenController: UITableViewController, DataSendProtocol {
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ItemCell else { return UITableViewCell() }
         
-        let item = data.currentItems[indexPath.row]
+        let item = data.getItem(at: indexPath.row)
         cell.setLabels(for: item, and: period) // set labels for cell
         return cell
     }
@@ -57,15 +57,15 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     
     // Implementation of needed protocol methods
     func sendDataAndUpdate(myData: Item) {
-        data.currentItems.append(myData)
-        writeToPlist()
+        data.saveItem(item: myData)
+        data.writeToPlist()
         tableView.reloadData()
     }
     
     // method to update item and refresh table after update
     func updateDataAndRefresh(myData: Item, updateIndex: Int) {
-        data.currentItems[updateIndex] = myData
-        writeToPlist()
+        data.updateArr(with: myData, at: updateIndex)
+        data.writeToPlist()
         tableView.reloadData()
     }
     
@@ -81,7 +81,7 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     
     // method to perform code when certain table row is selected
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = data.currentItems[indexPath.row] // store item corresponding to selected row
+        let item = data.getItem(at: indexPath.row) // store item corresponding to selected row
         if let vc = storyboard?.instantiateViewController(identifier: "addUpdateVC") as? AddItemViewController {
             navigationController?.pushViewController(vc, animated: true)
             _ = vc.view  // use this to load the vc view fully
@@ -96,9 +96,9 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     // delete item functionality
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            data.currentItems.remove(at: indexPath.row)
+            data.removeItem(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
-            writeToPlist()
+            data.writeToPlist()
         }
     }
     
@@ -123,29 +123,6 @@ class MainScreenController: UITableViewController, DataSendProtocol {
     }
     
     // READ FROM PLIST METHOD
-    func readFromPlistAndUpdateCurrentItems() {
-        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Items.plist")
-           
-            do {
-                let plistData = try Data(contentsOf: path)
-                let jsonDecoder = JSONDecoder()
-                let array = try jsonDecoder.decode([Item].self, from: plistData)
-                data.currentItems = array
-                } catch {
-                    print("Error while updating current items.")
-            }
-    }
-    
-    func writeToPlist() {
-            let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Items.plist")
-            do {
-                let jsonEncoder = JSONEncoder()
-                let receivedData = try jsonEncoder.encode(data.currentItems)
-                try receivedData.write(to: path)
-            } catch {
-                print("Error writing to plist")
-            }
-    }
     
     @IBAction func refreshButtonTapped(_ sender: Any) {
         tableView.reloadData()
