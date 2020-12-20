@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class ItemCell: UITableViewCell {
+    
     @IBOutlet weak var itemNameLabel: UILabel!
     
     @IBOutlet weak var periodsPassedLabel: UILabel!
@@ -16,17 +17,13 @@ class ItemCell: UITableViewCell {
     @IBOutlet weak var pricePerPeriodLabel: UILabel!
     
     // method to create labels
-    func setLabels(for item: Item, and period: Item.Period) {
-        let passedPeriod = item.calculatePeriod(for: period)
-        let pricePerPeriod: String
-        if passedPeriod == 0 { // prevent app from crashing because of zero division
-            pricePerPeriod = String(format: "%.2f", item.price)
-        } else {
-            pricePerPeriod = String(format: "%.2f", item.price/Double(passedPeriod))
-        }
+    func setLabels(for item: Item) {
+        let pricePerPeriod = item.pricePerPeriod
+        let periodsPassed = item.passedPeriod
         
         itemNameLabel.text = item.name
-        periodsPassedLabel.text = String(Int(passedPeriod))
-        pricePerPeriodLabel.text = "$\(pricePerPeriod)"
+        periodsPassedLabel.text = String(Int(periodsPassed))
+        //pricePerPeriodLabel.text = "$\(pricePerPeriod)"
+        pricePerPeriodLabel.text = String(format: "%.2f", pricePerPeriod)
     }
 }

@@ -8,7 +8,11 @@
 import Foundation
 
 
-struct Item: Codable { // needs Codable to be able to serialize it to json
+struct Item: Codable, Comparable { // needs Codable to be able to serialize it to json
+    
+    static func < (lhs: Item, rhs: Item) -> Bool { // ДОБАВИЛ РЕАЛИЗАЦИЮ СРАВНЕНИЯ
+        lhs.pricePerPeriod < rhs.pricePerPeriod
+    }
     
     var name: String
     
@@ -16,13 +20,27 @@ struct Item: Codable { // needs Codable to be able to serialize it to json
     
     var startDate: Date
     
-    enum Period: String, CaseIterable { // Case iterable is used to be able to iterate through provided cases. Cases can be used as strings
+    var period: Period
+    
+    var passedPeriod: Int {
+        return calculatePeriod(for: period)
+    }
+    
+    var pricePerPeriod: Double {
+        if passedPeriod == 0 { // prevent app from crashing because of zero division
+            return price
+        } else {
+            return price / Double(passedPeriod)
+        }
+    }
+    
+    enum Period: String, CaseIterable, Codable { // Case iterable is used to be able to iterate through provided cases. Cases can be used as strings
         case day
         case month
         case year
     }
     
-    // method to calculate period passed for instance item. Should be moved to ItemCell?
+    // method to calculate period passed for instance item.
     func calculatePeriod(for period: Period) -> Int {
         let currentDate = Date()
         switch period {
@@ -34,7 +52,6 @@ struct Item: Codable { // needs Codable to be able to serialize it to json
             return Int(currentDate.timeIntervalSince(startDate)/31104000)
         }
     }
-    
 }
 
 

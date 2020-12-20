@@ -18,10 +18,10 @@ class DefaultDataManager: DataManager, UpdateUIProtocol {
     private var currentItems: [Item] = [] {
         didSet {
             writeToPlist()
+            currentItems.sort(by: <) // ДОБАВИЛ ЭТО ЧТОБЫ МАССИВ СОРТИРОВАЛСЯ КАЖДЫЙ РАЗ ПОСЛЕ ИЗМЕНЕНИЯ
             onDataRefresh?()
         }
     }
-    
     
     var arrLength: Int {
         currentItems.count
@@ -65,6 +65,12 @@ class DefaultDataManager: DataManager, UpdateUIProtocol {
             } catch {
                 print("Error writing to plist")
             }
+    }
+    
+    func updatePeriod(to period: Item.Period) {
+        for i in 0..<currentItems.count {
+            currentItems[i].period = period
+        }
     }
     
 }
