@@ -8,13 +8,25 @@
 import Foundation
 
 
-struct Item: Codable { // needs Codable to be able to serialize it to json
+struct Item: Codable, Comparable { // needs Codable to be able to serialize it to json
+    
+    static func < (lhs: Item, rhs: Item) -> Bool { // ДОБАВИЛ РЕАЛИЗАЦИЮ СРАВНЕНИЯ
+        lhs.pricePerPeriod < rhs.pricePerPeriod
+    }
     
     var name: String
     
     var price: Double
     
     var startDate: Date
+    
+    var pricePerPeriod: Double { // ЗДЕСЬ ПРОСТО ПОСТАВИЛ ЗАГЛУШКУ. ПРОБЛЕМА В ТОМ
+        // ЧТО ЭТО ДОЛЖНО СЧИТАТЬСЯ КАК PRICE (это есть) ДЕЛЕННОЕ НА PERIOD. А ВОТ ТУТ
+        // ПРОБЛЕМА ПОТОМУ ЧТО PERIOD СЧИТАЕТСЯ МЕТОДОМ calculatePeriod(for: ). ЭТОТ
+        // МЕТОД ПОЛУЧАЕТ period ИЗ MainController, ПОЭТОМУ Я НЕ ПОНИМАЮ КАК МНЕ
+        // ПОСЧИТАТЬ ЭТОТ СOMPUTED PROPERTY
+        return 3.33
+    }
     
     enum Period: String, CaseIterable { // Case iterable is used to be able to iterate through provided cases. Cases can be used as strings
         case day
@@ -34,7 +46,8 @@ struct Item: Codable { // needs Codable to be able to serialize it to json
             return Int(currentDate.timeIntervalSince(startDate)/31104000)
         }
     }
-    
+
+        
 }
 
 
