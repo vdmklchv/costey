@@ -34,7 +34,7 @@ struct Item: Codable, Comparable { // needs Codable to be able to serialize it t
         }
     }
     
-    enum Period: String, CaseIterable { // Case iterable is used to be able to iterate through provided cases. Cases can be used as strings
+    enum Period: String, CaseIterable, Codable { // Case iterable is used to be able to iterate through provided cases. Cases can be used as strings
         case day
         case month
         case year
