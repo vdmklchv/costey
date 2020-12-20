@@ -20,12 +20,18 @@ struct Item: Codable, Comparable { // needs Codable to be able to serialize it t
     
     var startDate: Date
     
-    var pricePerPeriod: Double { // ЗДЕСЬ ПРОСТО ПОСТАВИЛ ЗАГЛУШКУ. ПРОБЛЕМА В ТОМ
-        // ЧТО ЭТО ДОЛЖНО СЧИТАТЬСЯ КАК PRICE (это есть) ДЕЛЕННОЕ НА PERIOD. А ВОТ ТУТ
-        // ПРОБЛЕМА ПОТОМУ ЧТО PERIOD СЧИТАЕТСЯ МЕТОДОМ calculatePeriod(for: ). ЭТОТ
-        // МЕТОД ПОЛУЧАЕТ period ИЗ MainController, ПОЭТОМУ Я НЕ ПОНИМАЮ КАК МНЕ
-        // ПОСЧИТАТЬ ЭТОТ СOMPUTED PROPERTY, САМ PRICE PER PERIOD СЕЙЧАС СЧИТАЕТСЯ В ItemCell ПОТОМУ ЧТО РАНЕЕ ИСПОЛЬЗОВАЛСЯ ТОЛЬКО ДЛЯ ОТОБРАЖЕНИЯ. С ItemCell ПРОБЛЕМ НЕ БУДЕТ Я ДУМАЮ, ТАМ МОЖНО БУДЕТ ПРОСТО ИЗ ПЕРЕДАННОГО ITEM подтягивать ЭТОТ computed property
-        return 3.33
+    var period: Period
+    
+    var passedPeriod: Int {
+        return calculatePeriod(for: period)
+    }
+    
+    var pricePerPeriod: Double {
+        if passedPeriod == 0 { // prevent app from crashing because of zero division
+            return price
+        } else {
+            return price / Double(passedPeriod)
+        }
     }
     
     enum Period: String, CaseIterable { // Case iterable is used to be able to iterate through provided cases. Cases can be used as strings
@@ -34,7 +40,7 @@ struct Item: Codable, Comparable { // needs Codable to be able to serialize it t
         case year
     }
     
-    // method to calculate period passed for instance item. Should be moved to ItemCell?
+    // method to calculate period passed for instance item.
     func calculatePeriod(for period: Period) -> Int {
         let currentDate = Date()
         switch period {
@@ -46,8 +52,6 @@ struct Item: Codable, Comparable { // needs Codable to be able to serialize it t
             return Int(currentDate.timeIntervalSince(startDate)/31104000)
         }
     }
-
-        
 }
 
 

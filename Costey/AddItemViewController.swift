@@ -36,7 +36,7 @@ class AddItemViewController: UIViewController {
         let price = priceTextField.text {
             if let price = Double(price) {
                 let date = datePicker.date
-                let item = Item(name: name, price: price, startDate: date) // create item object from gathered information
+                let item = Item(name: name, price: price, startDate: date, period: .day) // CHECK what period must be here, may be a mistake
                 if delegate != nil { // check if delegate exists
                     let dataToSend = item
                     if self.title == "Add Item" { // check if we are at Add Item or Edit Item flow and call corresponding methods as delegate

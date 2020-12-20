@@ -41,7 +41,7 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ItemCell else { return UITableViewCell() }
         
         let item = data.getItem(at: indexPath.row)
-        cell.setLabels(for: item, and: period) // set labels for cell
+        cell.setLabels(for: item) // set labels for cell
         return cell
     }
     
