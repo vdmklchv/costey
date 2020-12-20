@@ -24,7 +24,7 @@ struct Item: Codable, Comparable { // needs Codable to be able to serialize it t
         // ЧТО ЭТО ДОЛЖНО СЧИТАТЬСЯ КАК PRICE (это есть) ДЕЛЕННОЕ НА PERIOD. А ВОТ ТУТ
         // ПРОБЛЕМА ПОТОМУ ЧТО PERIOD СЧИТАЕТСЯ МЕТОДОМ calculatePeriod(for: ). ЭТОТ
         // МЕТОД ПОЛУЧАЕТ period ИЗ MainController, ПОЭТОМУ Я НЕ ПОНИМАЮ КАК МНЕ
-        // ПОСЧИТАТЬ ЭТОТ СOMPUTED PROPERTY
+        // ПОСЧИТАТЬ ЭТОТ СOMPUTED PROPERTY, САМ PRICE PER PERIOD СЕЙЧАС СЧИТАЕТСЯ В ItemCell ПОТОМУ ЧТО РАНЕЕ ИСПОЛЬЗОВАЛСЯ ТОЛЬКО ДЛЯ ОТОБРАЖЕНИЯ. С ItemCell ПРОБЛЕМ НЕ БУДЕТ Я ДУМАЮ, ТАМ МОЖНО БУДЕТ ПРОСТО ИЗ ПЕРЕДАННОГО ITEM подтягивать ЭТОТ computed property
         return 3.33
     }
     
