@@ -23,7 +23,6 @@ class ItemCell: UITableViewCell {
         
         itemNameLabel.text = item.name
         periodsPassedLabel.text = String(Int(periodsPassed))
-        //pricePerPeriodLabel.text = "$\(pricePerPeriod)"
         pricePerPeriodLabel.text = String(format: "%.2f", pricePerPeriod)
     }
 }

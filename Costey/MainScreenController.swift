@@ -114,6 +114,7 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
     
     func resetSegmentedControl() {
         periodSegmentedControl.selectedSegmentIndex = 0
+        data.updatePeriod(to: .day)
         tableView.reloadData()
     }
 }
