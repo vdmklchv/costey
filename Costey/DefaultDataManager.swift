@@ -18,7 +18,7 @@ class DefaultDataManager: DataManager, UpdateUIProtocol {
     private var currentItems: [Item] = [] {
         didSet {
             writeToPlist()
-            currentItems.sort(by: <) // ДОБАВИЛ ЭТО ЧТОБЫ МАССИВ СОРТИРОВАЛСЯ КАЖДЫЙ РАЗ ПОСЛЕ ИЗМЕНЕНИЯ
+            currentItems.sort(by: <)
             onDataRefresh?()
         }
     }

@@ -13,8 +13,6 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
     
     @IBOutlet weak var periodSegmentedControl: UISegmentedControl!
     
-    var period: Item.Period = .day
-    
     let data = DefaultDataManager()
     
     
@@ -68,6 +66,7 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
             navigationController?.pushViewController(addItemVc, animated: true) // push stored view controller
             addItemVc.delegate = self // set pushed controller as delegate
             addItemVc.title = "Add Item" // set pushed controller title
+            addItemVc.onItemAdd = { self.resetSegmentedControl() }
         }
     }
     
@@ -100,21 +99,21 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
     
     // method for segmented control that checks chosen segment and updates period accordingly
     @IBAction func onSegmentChange(_ sender: Any) {
-        switch periodSegmentedControl.selectedSegmentIndex {
-        case 0:
-            setPeriodAndReload(for: .day)
-        case 1:
-            setPeriodAndReload(for: .month)
-        case 2:
-            setPeriodAndReload(for: .year)
-        default:
-            period = Item.Period.day
+        if periodSegmentedControl.selectedSegmentIndex == 0 {
+            return setPeriodAndReload(for: .day)
+        } else if periodSegmentedControl.selectedSegmentIndex == 1 {
+            return setPeriodAndReload(for: .month)
+        } else {
+            return setPeriodAndReload(for: .year)
         }
     }
-    
-    // READ FROM PLIST METHOD
-    
+        
     @IBAction func refreshButtonTapped(_ sender: Any) {
+        tableView.reloadData()
+    }
+    
+    func resetSegmentedControl() {
+        periodSegmentedControl.selectedSegmentIndex = 0
         tableView.reloadData()
     }
 }
