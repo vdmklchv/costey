@@ -67,4 +67,10 @@ class DefaultDataManager: DataManager, UpdateUIProtocol {
             }
     }
     
+    func updatePeriod(to period: Item.Period) {
+        for i in 0..<currentItems.count {
+            currentItems[i].period = period
+        }
+    }
+    
 }

@@ -94,7 +94,7 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
     
     // method to switch period and reload table data after it
     func setPeriodAndReload(for passedPeriod: Item.Period) {
-        period = passedPeriod
+        data.updatePeriod(to: passedPeriod)
         tableView.reloadData()
     }
     
