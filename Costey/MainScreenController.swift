@@ -100,11 +100,11 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
     // method for segmented control that checks chosen segment and updates period accordingly
     @IBAction func onSegmentChange(_ sender: Any) {
         if periodSegmentedControl.selectedSegmentIndex == 0 {
-            return setPeriodAndReload(for: .day)
+            setPeriodAndReload(for: .day)
         } else if periodSegmentedControl.selectedSegmentIndex == 1 {
-            return setPeriodAndReload(for: .month)
-        } else {
-            return setPeriodAndReload(for: .year)
+            setPeriodAndReload(for: .month)
+        } else if periodSegmentedControl.selectedSegmentIndex == 2 {
+            setPeriodAndReload(for: .year)
         }
     }
         

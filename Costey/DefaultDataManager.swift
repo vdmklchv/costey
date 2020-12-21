@@ -12,6 +12,7 @@ class DefaultDataManager: DataManager, UpdateUIProtocol {
     init() {
         readFromPlistAndUpdateCurrentItems()
     }
+
     
     var onDataRefresh: (() -> Void)?
         
@@ -20,6 +21,12 @@ class DefaultDataManager: DataManager, UpdateUIProtocol {
             writeToPlist()
             currentItems.sort(by: <)
             onDataRefresh?()
+        }
+    }
+    
+    func printCurrentItems() {
+        for item in currentItems {
+            print(item)
         }
     }
     
@@ -51,25 +58,29 @@ class DefaultDataManager: DataManager, UpdateUIProtocol {
                 let jsonDecoder = JSONDecoder()
                 let array = try jsonDecoder.decode([Item].self, from: plistData)
                 currentItems = array
+                updatePeriod(to: .day)
                 } catch {
                     print("Error while updating current items.")
             }
     }
     
     func writeToPlist() {
-            let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Items.plist")
-            do {
-                let jsonEncoder = JSONEncoder()
-                let receivedData = try jsonEncoder.encode(currentItems)
-                try receivedData.write(to: path)
-            } catch {
-                print("Error writing to plist")
-            }
+        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Items.plist")
+        do {
+            let jsonEncoder = JSONEncoder()
+            let receivedData = try jsonEncoder.encode(currentItems)
+            try receivedData.write(to: path)
+        } catch {
+            print("Error writing to plist")
+        }
     }
     
     func updatePeriod(to period: Item.Period) {
-        for i in 0..<currentItems.count {
-            currentItems[i].period = period
+        if currentItems.count > 0 {
+            for i in 0..<currentItems.count {
+                currentItems[i].period = period
+        }
+        
         }
     }
     

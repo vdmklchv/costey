@@ -10,7 +10,7 @@ import Foundation
 
 struct Item: Codable, Comparable { // needs Codable to be able to serialize it to json
     
-    static func < (lhs: Item, rhs: Item) -> Bool { // ДОБАВИЛ РЕАЛИЗАЦИЮ СРАВНЕНИЯ
+    static func < (lhs: Item, rhs: Item) -> Bool { 
         lhs.pricePerPeriod < rhs.pricePerPeriod
     }
     
@@ -20,27 +20,26 @@ struct Item: Codable, Comparable { // needs Codable to be able to serialize it t
     
     var startDate: Date
     
-    var period: Period
+    var period: Period = .day
     
     var passedPeriod: Int {
         return calculatePeriod(for: period)
     }
     
     var pricePerPeriod: Double {
-        if passedPeriod == 0 { // prevent app from crashing because of zero division
+        if passedPeriod == 0 {
             return price
         } else {
             return price / Double(passedPeriod)
         }
     }
     
-    enum Period: String, CaseIterable, Codable { // Case iterable is used to be able to iterate through provided cases. Cases can be used as strings
+    enum Period: String, CaseIterable, Codable {
         case day
         case month
         case year
     }
     
-    // method to calculate period passed for instance item.
     func calculatePeriod(for period: Period) -> Int {
         let currentDate = Date()
         switch period {
