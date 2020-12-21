@@ -94,7 +94,6 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
     // method to switch period and reload table data after it
     func setPeriodAndReload(for passedPeriod: Item.Period) {
         data.updatePeriod(to: passedPeriod)
-        tableView.reloadData()
     }
     
     // method for segmented control that checks chosen segment and updates period accordingly
@@ -115,7 +114,6 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
     func resetSegmentedControl() {
         periodSegmentedControl.selectedSegmentIndex = 0
         data.updatePeriod(to: .day)
-        tableView.reloadData()
     }
 }
 
