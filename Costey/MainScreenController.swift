@@ -14,7 +14,7 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
     @IBOutlet weak var periodSegmentedControl: UISegmentedControl!
     
     let data = DefaultDataManager()
-    
+    var period: Item.Period = .day
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as? ItemCell else { return UITableViewCell() }
         
         let item = data.getItem(at: indexPath.row)
-        cell.setLabels(for: item) // set labels for cell
+        cell.setLabels(for: item, in: period) // set labels for cell
         return cell
     }
     
@@ -67,6 +67,7 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
             addItemVc.delegate = self // set pushed controller as delegate
             addItemVc.title = "Add Item" // set pushed controller title
             addItemVc.onItemAdd = { self.resetSegmentedControl() }
+            addItemVc.data = data
         }
     }
     
@@ -91,20 +92,16 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
         }
     }
     
-    // method to switch period and reload table data after it
-    func setPeriodAndReload(for passedPeriod: Item.Period) {
-        data.updatePeriod(to: passedPeriod)
-    }
-    
     // method for segmented control that checks chosen segment and updates period accordingly
     @IBAction func onSegmentChange(_ sender: Any) {
         if periodSegmentedControl.selectedSegmentIndex == 0 {
-            setPeriodAndReload(for: .day)
+            period = .day
         } else if periodSegmentedControl.selectedSegmentIndex == 1 {
-            setPeriodAndReload(for: .month)
+            period = .month
         } else if periodSegmentedControl.selectedSegmentIndex == 2 {
-            setPeriodAndReload(for: .year)
+            period = .year
         }
+        tableView.reloadData()
     }
         
     @IBAction func refreshButtonTapped(_ sender: Any) {
@@ -113,7 +110,6 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
     
     func resetSegmentedControl() {
         periodSegmentedControl.selectedSegmentIndex = 0
-        data.updatePeriod(to: .day)
     }
 }
 

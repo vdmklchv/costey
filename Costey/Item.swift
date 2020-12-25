@@ -8,11 +8,7 @@
 import Foundation
 
 
-struct Item: Codable, Comparable { // needs Codable to be able to serialize it to json
-    
-    static func < (lhs: Item, rhs: Item) -> Bool { 
-        lhs.pricePerPeriod < rhs.pricePerPeriod
-    }
+struct Item: Codable { // needs Codable to be able to serialize it to json
     
     var name: String
     
@@ -20,36 +16,27 @@ struct Item: Codable, Comparable { // needs Codable to be able to serialize it t
     
     var startDate: Date
     
-    var period: Period = .day
-    
-    var passedPeriod: Int {
-        return calculatePeriod(for: period)
-    }
-    
-    var pricePerPeriod: Double {
-        if passedPeriod == 0 {
-            return price
-        } else {
-            return price / Double(passedPeriod)
-        }
-    }
-    
     enum Period: String, CaseIterable, Codable {
         case day
         case month
         case year
     }
     
-    func calculatePeriod(for period: Period) -> Int {
+    func getCount(for period: Period) -> Double {
         let currentDate = Date()
         switch period {
         case .day:
-            return Int(currentDate.timeIntervalSince(startDate)/86400)
+            return  currentDate.timeIntervalSince(startDate)/86400
         case .month:
-            return Int(currentDate.timeIntervalSince(startDate)/2592000)
+            return currentDate.timeIntervalSince(startDate)/2592000
         case .year:
-            return Int(currentDate.timeIntervalSince(startDate)/31104000)
+            return currentDate.timeIntervalSince(startDate)/31104000
         }
+    }
+    
+    func calculatePrice(for period: Period) -> Double {
+        let count = getCount(for: period)
+        return Int(count) != 0 ? (price / count) : price
     }
 }
 

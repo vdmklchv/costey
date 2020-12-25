@@ -18,7 +18,7 @@ class AddItemViewController: UIViewController {
     
     var delegate: DataSendProtocol? = nil // delegate variable
     var updateIndex: Int = 0 // updateIndex variable needed to first receive it and then send it back
-    let data = DefaultDataManager()
+    var data: DefaultDataManager?
     var onItemAdd: (() -> Void)? = nil
     
     @IBOutlet weak var nameTextField: UITextField!
@@ -38,19 +38,16 @@ class AddItemViewController: UIViewController {
         let price = priceTextField.text {
             if let price = Double(price) {
                 let date = datePicker.date
-                let item = Item(name: name, price: price, startDate: date, period: .day)
-                if delegate != nil { // check if delegate exists
-                    let dataToSend = item
-                    if self.title == "Add Item" { // check if we are at Add Item or Edit Item flow and call corresponding methods as delegate
-                        self.delegate?.sendDataAndUpdate(myData: dataToSend)
-                    } else {
-                        self.delegate?.updateDataAndRefresh(myData: dataToSend, updateIndex: updateIndex)
-                    }
+                let item = Item(name: name, price: price, startDate: date)
+                let dataToSend = item
+                if self.title == "Add Item" { // check if we are at Add Item or Edit Item flow and call corresponding methods as delegate
+                    self.delegate?.sendDataAndUpdate(myData: dataToSend)
+                } else {
+                    self.delegate?.updateDataAndRefresh(myData: dataToSend, updateIndex: updateIndex)
+                }
                     self.navigationController?.popViewController(animated: true) // remove add/update controller after job is done
-                    data.updatePeriod(to: .day)
                 }
             }
-        }
         onItemAdd?()
     }
 }

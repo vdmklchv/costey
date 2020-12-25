@@ -19,14 +19,7 @@ class DefaultDataManager: DataManager, UpdateUIProtocol {
     private var currentItems: [Item] = [] {
         didSet {
             writeToPlist()
-            currentItems.sort(by: <)
             onDataRefresh?()
-        }
-    }
-    
-    func printCurrentItems() {
-        for item in currentItems {
-            print(item)
         }
     }
     
@@ -52,16 +45,17 @@ class DefaultDataManager: DataManager, UpdateUIProtocol {
     
     func readFromPlistAndUpdateCurrentItems() {
         let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Items.plist")
-           
-            do {
-                let plistData = try Data(contentsOf: path)
-                let jsonDecoder = JSONDecoder()
-                let array = try jsonDecoder.decode([Item].self, from: plistData)
-                currentItems = array
-                updatePeriod(to: .day)
-                } catch {
-                    print("Error while updating current items.")
-            }
+        let fileManager = FileManager.default
+        let urlString = path.absoluteString
+        guard fileManager.fileExists(atPath: urlString) else { return }
+        do {
+            let plistData = try Data(contentsOf: path)
+            let jsonDecoder = JSONDecoder()
+            let array = try jsonDecoder.decode([Item].self, from: plistData)
+            currentItems = array
+        } catch {
+            print("Error while updating current items.")
+        }
     }
     
     func writeToPlist() {
@@ -72,15 +66,6 @@ class DefaultDataManager: DataManager, UpdateUIProtocol {
             try receivedData.write(to: path)
         } catch {
             print("Error writing to plist")
-        }
-    }
-    
-    func updatePeriod(to period: Item.Period) {
-        if currentItems.count > 0 {
-            for i in 0..<currentItems.count {
-                currentItems[i].period = period
-        }
-        
         }
     }
     
