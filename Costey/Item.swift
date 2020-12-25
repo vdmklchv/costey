@@ -36,7 +36,7 @@ struct Item: Codable { // needs Codable to be able to serialize it to json
     
     func calculatePrice(for period: Period) -> Double {
         let count = getCount(for: period)
-        return Int(count) != 0 ? (price / count) : price
+        return price / max(1.0, floor(count))
     }
 }
 

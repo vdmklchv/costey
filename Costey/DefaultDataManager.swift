@@ -47,7 +47,7 @@ class DefaultDataManager: DataManager, UpdateUIProtocol {
         let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Items.plist")
         let fileManager = FileManager.default
         let urlString = path.absoluteString
-        guard fileManager.fileExists(atPath: urlString) else { return }
+        guard fileManager.fileExists(atPath: urlString) else { print("Plist not found."); return }
         do {
             let plistData = try Data(contentsOf: path)
             let jsonDecoder = JSONDecoder()
@@ -64,6 +64,7 @@ class DefaultDataManager: DataManager, UpdateUIProtocol {
             let jsonEncoder = JSONEncoder()
             let receivedData = try jsonEncoder.encode(currentItems)
             try receivedData.write(to: path)
+            print("Write success")
         } catch {
             print("Error writing to plist")
         }
