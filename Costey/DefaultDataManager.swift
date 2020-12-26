@@ -44,15 +44,15 @@ class DefaultDataManager: DataManager, UpdateUIProtocol {
     }
     
     func readFromPlistAndUpdateCurrentItems() {
-        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Items.plist")
+        let fileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("Items.plist")
         let fileManager = FileManager.default
-        let urlString = path.absoluteString
-        guard fileManager.fileExists(atPath: urlString) else { print("Plist not found."); return }
+        guard fileManager.fileExists(atPath: fileURL.path) else { return }
         do {
-            let plistData = try Data(contentsOf: path)
+            let plistData = try Data(contentsOf: fileURL)
             let jsonDecoder = JSONDecoder()
             let array = try jsonDecoder.decode([Item].self, from: plistData)
             currentItems = array
+            sortItems()
         } catch {
             print("Error while updating current items.")
         }
@@ -64,10 +64,13 @@ class DefaultDataManager: DataManager, UpdateUIProtocol {
             let jsonEncoder = JSONEncoder()
             let receivedData = try jsonEncoder.encode(currentItems)
             try receivedData.write(to: path)
-            print("Write success")
         } catch {
             print("Error writing to plist")
         }
     }
     
+    func sortItems() {
+        let sortedItems = currentItems.sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
+        currentItems = sortedItems
+    }
 }

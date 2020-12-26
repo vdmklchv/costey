@@ -25,7 +25,9 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
         }
         periodSegmentedControl.selectedSegmentIndex = 0 // select the first segmented control by default
         self.title = "All items" // set title for table view controller
-        data.onDataRefresh = { self.tableView.reloadData() }
+        data.onDataRefresh = {
+            self.tableView.reloadData()
+        }
     }
     
     // return number of rows needed
@@ -66,7 +68,10 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
             navigationController?.pushViewController(addItemVc, animated: true) // push stored view controller
             addItemVc.delegate = self // set pushed controller as delegate
             addItemVc.title = "Add Item" // set pushed controller title
-            addItemVc.onItemAdd = { self.resetSegmentedControl() }
+            addItemVc.onItemAdd = {
+                self.resetSegmentedControl()
+                self.data.sortItems()
+            }
             addItemVc.data = data
         }
     }

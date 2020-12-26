@@ -26,4 +26,5 @@ class ItemCell: UITableViewCell {
         periodsPassedLabel.text = String(Int(periodsPassed))
         pricePerPeriodLabel.text = "$ \(String(format: "%.2f", pricePerPeriod))"
     }
+    
 }
