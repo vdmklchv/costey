@@ -52,7 +52,7 @@ class DefaultDataManager: DataManager, UpdateUIProtocol {
             let jsonDecoder = JSONDecoder()
             let array = try jsonDecoder.decode([Item].self, from: plistData)
             currentItems = array
-            sortItems()
+            sortItems(per: .day)
         } catch {
             print("Error while updating current items.")
         }
@@ -69,8 +69,15 @@ class DefaultDataManager: DataManager, UpdateUIProtocol {
         }
     }
     
-    func sortItems() {
-        let sortedItems = currentItems.sorted(by: { $0.name.lowercased() < $1.name.lowercased() })
+    func sortItems(per period: Item.Period) {
+        var sortedItems: [Item] = []
+        if period == .day {
+            sortedItems = currentItems.sorted(by: { $0.calculatePrice(for: .day) < $1.calculatePrice(for: .day) })
+        } else if period == .month {
+            sortedItems = currentItems.sorted(by: { $0.calculatePrice(for: .month) < $1.calculatePrice(for: .month) })
+        } else if period == .year {
+            sortedItems = currentItems.sorted(by: { $0.calculatePrice(for: .day) < $1.calculatePrice(for: .day) })
+        }
         currentItems = sortedItems
     }
 }

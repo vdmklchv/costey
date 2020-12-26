@@ -70,7 +70,7 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
             addItemVc.title = "Add Item" // set pushed controller title
             addItemVc.onItemAdd = {
                 self.resetSegmentedControl()
-                self.data.sortItems()
+                self.data.sortItems(per: .day)
             }
             addItemVc.data = data
         }
@@ -106,6 +106,7 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
         } else if periodSegmentedControl.selectedSegmentIndex == 2 {
             period = .year
         }
+        data.sortItems(per: period)
         tableView.reloadData()
     }
         
