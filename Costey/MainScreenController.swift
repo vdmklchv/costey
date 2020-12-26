@@ -24,6 +24,7 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
             setSegmentedControlTitle(for: index, title: item.rawValue.capitalized)
         }
         periodSegmentedControl.selectedSegmentIndex = 0 // select the first segmented control by default
+        data.sortItems(per: .day)
         self.title = "All items" // set title for table view controller
         data.onDataRefresh = {
             self.tableView.reloadData()
