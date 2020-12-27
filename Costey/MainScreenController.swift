@@ -108,7 +108,6 @@ class MainScreenController: UITableViewController, DataSendProtocol  {
             period = .year
         }
         data.sortItems(per: period)
-        tableView.reloadData()
     }
         
     @IBAction func refreshButtonTapped(_ sender: Any) {

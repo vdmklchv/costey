@@ -71,11 +71,12 @@ class DefaultDataManager: DataManager, UpdateUIProtocol {
     
     func sortItems(per period: Item.Period) {
         var sortedItems: [Item] = []
-        if period == .day {
+        switch period {
+        case .day:
             sortedItems = currentItems.sorted(by: { $0.calculatePrice(for: .day) < $1.calculatePrice(for: .day) })
-        } else if period == .month {
+        case .month:
             sortedItems = currentItems.sorted(by: { $0.calculatePrice(for: .month) < $1.calculatePrice(for: .month) })
-        } else if period == .year {
+        case .year:
             sortedItems = currentItems.sorted(by: { $0.calculatePrice(for: .year) < $1.calculatePrice(for: .year) })
         }
         currentItems = sortedItems
