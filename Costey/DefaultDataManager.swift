@@ -54,7 +54,7 @@ class DefaultDataManager: DataManager, UpdateUIProtocol {
             currentItems = array
             sortItems(per: .day)
         } catch {
-            print("Error while updating current items.")
+            print("Error while updating current items.\(error)")
         }
     }
     
@@ -65,7 +65,7 @@ class DefaultDataManager: DataManager, UpdateUIProtocol {
             let receivedData = try jsonEncoder.encode(currentItems)
             try receivedData.write(to: path)
         } catch {
-            print("Error writing to plist")
+            print("Error writing to plist \(error)")
         }
     }
     
