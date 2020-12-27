@@ -25,6 +25,11 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        nameTextField.becomeFirstResponder()
+    }
+    
     // method to pre-populate text fields and date picker
     func prepopulateItemData(from item: Item) {
         nameTextField.text = item.name
