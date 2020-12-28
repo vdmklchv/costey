@@ -70,15 +70,6 @@ class DefaultDataManager: DataManager, UpdateUIProtocol {
     }
     
     func sortItems(per period: Item.Period) {
-        var sortedItems: [Item] = []
-        switch period {
-        case .day:
-            sortedItems = currentItems.sorted(by: { $0.calculatePrice(for: .day) < $1.calculatePrice(for: .day) })
-        case .month:
-            sortedItems = currentItems.sorted(by: { $0.calculatePrice(for: .month) < $1.calculatePrice(for: .month) })
-        case .year:
-            sortedItems = currentItems.sorted(by: { $0.calculatePrice(for: .year) < $1.calculatePrice(for: .year) })
-        }
-        currentItems = sortedItems
+        currentItems.sort(by: { $0.calculatePrice(for: period) < $1.calculatePrice(for: period)})
     }
 }
